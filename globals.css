@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+html,
+body {
+  scroll-behavior: smooth;
+  background-color: #f0f8ff; /* Light ocean background */
+  font-family: 'Inter', sans-serif;
+}
