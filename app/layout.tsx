@@ -1,4 +1,11 @@
+import DocumentsForSailors from './components/DocumentsForSailors';
 import Footer from './components/Footer';
+import Hero from './components/Hero';
+import InsuranceSection from './components/InsuranceSection';
+import MissionVisionSection from './components/MissionVisionSection';
+import Navbar from './components/Navbar';
+import OurServices from './components/Ourservice';
+import Service from './components/Service';
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -14,8 +21,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Navbar />
+      <Hero />
       <body>{children}
-      <Footer />
+        <Service />
+        <InsuranceSection />
+        <OurServices />
+        <DocumentsForSailors />
+        <MissionVisionSection />
+        <Footer />
       </body>
     </html>
   );
