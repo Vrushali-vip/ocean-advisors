@@ -79,6 +79,8 @@ type CountryDoc = {
               <Image
                 src={country.flag}
                 alt={country.name}
+                height={50}
+                width={50}
                 className="w-12 h-auto mb-4"
               />
               <h3 className="font-bold text-md text-gray-900">{country.name}</h3>

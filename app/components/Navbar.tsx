@@ -772,18 +772,756 @@
 
 // export default Navbar;
 
+// 'use client'; // if you're using Next.js 13/14 with app directory
+
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import React, { useEffect, useState } from 'react';
+
+// // Define a type for submenu identifiers
+// type SubmenuId = 'mobile-about' | 'mobile-services' | 'mobile-contact' | null;
+
+// const Navbar = () => {
+//   const [scrolled, setScrolled] = useState(false);
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const offset = window.scrollY;
+//       if (offset > 10) {
+//         setScrolled(true);
+//       } else {
+//         setScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   const toggleMobileMenu = () => {
+//     setMobileMenuOpen(!mobileMenuOpen);
+//   };
+  
+//   // For mobile only
+//   const [activeSubmenu, setActiveSubmenu] = useState<SubmenuId>(null);
+  
+//   const toggleSubmenu = (submenu: SubmenuId) => {
+//     if (activeSubmenu === submenu) {
+//       setActiveSubmenu(null);
+//     } else {
+//       setActiveSubmenu(submenu);
+//     }
+//   };
+
+//   return (
+//     <nav
+//       className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${
+//         scrolled ? 'bg-[#203864] shadow-lg' : 'bg-transparent'
+//       }`}
+//     >
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+//         {/* Logo */}
+//         <div className="text-white text-xl font-bold">
+//           <div className="flex items-center">
+//             <Link href="/">
+//               <Image
+//                 src="/logo.png"
+//                 width={200}
+//                 height={200}
+//                 alt="Oceanic Advisors Logo"
+//                 className="h-16 sm:h-26 w-auto"
+//               />
+//             </Link>
+//           </div>
+//         </div>
+
+//         <button 
+//           className="md:hidden text-white focus:outline-none"
+//           onClick={toggleMobileMenu}
+//         >
+//           <svg 
+//             xmlns="http://www.w3.org/2000/svg" 
+//             className="h-6 w-6" 
+//             fill="none" 
+//             viewBox="0 0 24 24" 
+//             stroke="currentColor"
+//           >
+//             {mobileMenuOpen ? (
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+//             ) : (
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+//             )}
+//           </svg>
+//         </button>
+
+//         {/* Desktop Navigation */}
+//         <div className="hidden md:flex space-x-8 text-white text-xl font-medium ml-0 ">
+//           <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">Home</a>
+          
+//           {/* About Submenu */}
+//           <div className="relative group">
+//             <a href="/about-us" className="hover:text-[#B4C7E7] transition-colors duration-300">
+//               About
+//             </a>
+            
+//             <div className="absolute left-0 w-48 rounded-md bg-[#203864] py-1 hidden group-hover:block">
+//               <a href="/about-us/team" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Our Team</a>
+//               <a href="/about-us/history" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">History</a>
+//               <a href="/about-us/values" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Values</a>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="hidden md:flex space-x-8 text-white text-xl font-medium">
+//           {/* Services Submenu */}
+//           <div className="relative group">
+//             <a href="/services" className="hover:text-[#B4C7E7] transition-colors duration-300">
+//               Services
+//             </a>
+            
+//             <div className="absolute left-0 w-72 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+//               <a href="/services/maintenance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Maintenance planning and oversight</a>
+//               <a href="/services/inspections" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Onboard inspections and audits</a>
+//               <a href="/services/monitoring" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Performance monitoring and analysis</a>
+//               <a href="/services/dry-docking" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Dry-docking management</a>
+//               <a href="/services/compliance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Regulatory compliance verification</a>
+//               <a href="/services/assessments" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Vessel condition assessments</a>
+//             </div>
+//           </div>
+          
+//           {/* Contact Submenu */}
+//           <div className="relative group">
+//             <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">
+//               Contact
+//             </a>
+            
+//             <div className="absolute right-0 w-48 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+//               <a href="/contact/locations" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Locations</a>
+//               <a href="/contact/support" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Support</a>
+//               <a href="/contact/careers" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Careers</a>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="hidden md:block">
+//           <button className="bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+//             Let&apos;s Talk
+//           </button>
+//         </div>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       <div 
+//         className={`md:hidden bg-[#203864] w-full ${
+//           mobileMenuOpen ? 'block' : 'hidden'
+//         }`}
+//       >
+//         <div className="px-4 pt-2 pb-4 space-y-1">
+//           <a 
+//             href="#" 
+//             className="block text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//           >
+//             Home
+//           </a>
+          
+//           {/* Mobile About Submenu */}
+//           <div>
+//             <button 
+//               className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//               onClick={() => toggleSubmenu('mobile-about')}
+//             >
+//               About
+//               <svg 
+//                 className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-about' ? 'rotate-180' : ''}`} 
+//                 xmlns="http://www.w3.org/2000/svg" 
+//                 viewBox="0 0 20 20" 
+//                 fill="currentColor"
+//               >
+//                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//               </svg>
+//             </button>
+            
+//             {activeSubmenu === 'mobile-about' && (
+//               <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                 <a href="/about-us/team" className="block text-white text-md hover:text-[#B4C7E7] py-2">Our Team</a>
+//                 <a href="/about-us/history" className="block text-white text-md hover:text-[#B4C7E7] py-2">History</a>
+//                 <a href="/about-us/values" className="block text-white text-md hover:text-[#B4C7E7] py-2">Values</a>
+//               </div>
+//             )}
+//           </div>
+          
+//           {/* Mobile Services Submenu */}
+//           <div>
+//             <button 
+//               className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//               onClick={() => toggleSubmenu('mobile-services')}
+//             >
+//               Services
+//               <svg 
+//                 className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-services' ? 'rotate-180' : ''}`} 
+//                 xmlns="http://www.w3.org/2000/svg" 
+//                 viewBox="0 0 20 20" 
+//                 fill="currentColor"
+//               >
+//                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//               </svg>
+//             </button>
+            
+//             {activeSubmenu === 'mobile-services' && (
+//               <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                 <a href="/services/maintenance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Maintenance planning and oversight</a>
+//                 <a href="/services/inspections" className="block text-white text-md hover:text-[#B4C7E7] py-2">Onboard inspections and audits</a>
+//                 <a href="/services/monitoring" className="block text-white text-md hover:text-[#B4C7E7] py-2">Performance monitoring and analysis</a>
+//                 <a href="/services/dry-docking" className="block text-white text-md hover:text-[#B4C7E7] py-2">Dry-docking management</a>
+//                 <a href="/services/compliance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Regulatory compliance verification</a>
+//                 <a href="/services/assessments" className="block text-white text-md hover:text-[#B4C7E7] py-2">Vessel condition assessments</a>
+//               </div>
+//             )}
+//           </div>
+          
+//           {/* Mobile Contact Submenu */}
+//           <div>
+//             <button 
+//               className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//               onClick={() => toggleSubmenu('mobile-contact')}
+//             >
+//               Contact
+//               <svg 
+//                 className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-contact' ? 'rotate-180' : ''}`} 
+//                 xmlns="http://www.w3.org/2000/svg" 
+//                 viewBox="0 0 20 20" 
+//                 fill="currentColor"
+//               >
+//                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//               </svg>
+//             </button>
+            
+//             {activeSubmenu === 'mobile-contact' && (
+//               <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                 <a href="/contact/locations" className="block text-white text-md hover:text-[#B4C7E7] py-2">Locations</a>
+//                 <a href="/contact/support" className="block text-white text-md hover:text-[#B4C7E7] py-2">Support</a>
+//                 <a href="/contact/careers" className="block text-white text-md hover:text-[#B4C7E7] py-2">Careers</a>
+//               </div>
+//             )}
+//           </div>
+          
+//           <div className="pt-2">
+//             <button className="w-full bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+//               Get Started
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+// 'use client'; // if you're using Next.js 13/14 with app directory
+
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import React, { useEffect, useState } from 'react';
+
+// // Define a type for submenu identifiers
+// type SubmenuId = 'mobile-about' | 'mobile-services' | 'mobile-contact' | null;
+
+// const Navbar = () => {
+//   const [scrolled, setScrolled] = useState(false);
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const offset = window.scrollY;
+//       if (offset > 10) {
+//         setScrolled(true);
+//       } else {
+//         setScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   const toggleMobileMenu = () => {
+//     setMobileMenuOpen(!mobileMenuOpen);
+//   };
+  
+//   // For mobile only
+//   const [activeSubmenu, setActiveSubmenu] = useState<SubmenuId>(null);
+  
+//   const toggleSubmenu = (submenu: SubmenuId) => {
+//     if (activeSubmenu === submenu) {
+//       setActiveSubmenu(null);
+//     } else {
+//       setActiveSubmenu(submenu);
+//     }
+//   };
+
+//   return (
+//     <nav
+//       className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${
+//         scrolled ? 'bg-[#203864] shadow-lg' : 'bg-transparent'
+//       }`}
+//     >
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+//         {/* Logo */}
+//         <div className="text-white text-xl font-bold">
+//           <div className="flex items-center">
+//             <Link href="/">
+//               <Image
+//                 src="/logo.png"
+//                 width={200}
+//                 height={200}
+//                 alt="Oceanic Advisors Logo"
+//                 className="h-16 sm:h-26 w-auto"
+//               />
+//             </Link>
+//           </div>
+//         </div>
+
+//         <button 
+//           className="md:hidden text-white focus:outline-none"
+//           onClick={toggleMobileMenu}
+//         >
+//           <svg 
+//             xmlns="http://www.w3.org/2000/svg" 
+//             className="h-6 w-6" 
+//             fill="none" 
+//             viewBox="0 0 24 24" 
+//             stroke="currentColor"
+//           >
+//             {mobileMenuOpen ? (
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+//             ) : (
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+//             )}
+//           </svg>
+//         </button>
+
+//         {/* Desktop Navigation - Combined in a single div */}
+//         <div className="hidden md:flex items-center">
+//           <div className="flex space-x-8 text-white text-xl font-medium">
+//             <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">Home</a>
+            
+//             {/* About Submenu */}
+//             <div className="relative group">
+//               <a href="/about-us" className="hover:text-[#B4C7E7] transition-colors duration-300">
+//                 About
+//               </a>
+              
+//               <div className="absolute left-0 w-48 rounded-md bg-[#203864] py-1 hidden group-hover:block">
+//                 <a href="/about-us/team" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Our Team</a>
+//                 <a href="/about-us/history" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">History</a>
+//                 <a href="/about-us/values" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Values</a>
+//               </div>
+//             </div>
+            
+//             {/* Services Submenu */}
+//             <div className="relative group">
+//               <a href="/services" className="hover:text-[#B4C7E7] transition-colors duration-300">
+//                 Services
+//               </a>
+              
+//               <div className="absolute left-0 w-72 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+//                 <a href="/services/maintenance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Maintenance planning and oversight</a>
+//                 <a href="/services/inspections" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Onboard inspections and audits</a>
+//                 <a href="/services/monitoring" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Performance monitoring and analysis</a>
+//                 <a href="/services/dry-docking" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Dry-docking management</a>
+//                 <a href="/services/compliance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Regulatory compliance verification</a>
+//                 <a href="/services/assessments" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Vessel condition assessments</a>
+//               </div>
+//             </div>
+            
+//             {/* Contact Submenu */}
+//             <div className="relative group">
+//               <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">
+//                 Contact
+//               </a>
+              
+//               <div className="absolute right-0 w-48 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+//                 <a href="/contact/locations" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Locations</a>
+//                 <a href="/contact/support" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Support</a>
+//                 <a href="/contact/careers" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Careers</a>
+//               </div>
+//             </div>
+//           </div>
+          
+//           <div className="ml-8">
+//             <button className="bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+//               Let&apos;s Talk
+//             </button>
+//           </div>
+//         </div>
+
+//         {/* Mobile Menu */}
+//         <div 
+//           className={`md:hidden bg-[#203864] w-full ${
+//             mobileMenuOpen ? 'block' : 'hidden'
+//           }`}
+//         >
+//           <div className="px-4 pt-2 pb-4 space-y-1">
+//             <a 
+//               href="#" 
+//               className="block text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//             >
+//               Home
+//             </a>
+            
+//             {/* Mobile About Submenu */}
+//             <div>
+//               <button 
+//                 className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//                 onClick={() => toggleSubmenu('mobile-about')}
+//               >
+//                 About
+//                 <svg 
+//                   className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-about' ? 'rotate-180' : ''}`} 
+//                   xmlns="http://www.w3.org/2000/svg" 
+//                   viewBox="0 0 20 20" 
+//                   fill="currentColor"
+//                 >
+//                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//                 </svg>
+//               </button>
+              
+//               {activeSubmenu === 'mobile-about' && (
+//                 <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                   <a href="/about-us/team" className="block text-white text-md hover:text-[#B4C7E7] py-2">Our Team</a>
+//                   <a href="/about-us/history" className="block text-white text-md hover:text-[#B4C7E7] py-2">History</a>
+//                   <a href="/about-us/values" className="block text-white text-md hover:text-[#B4C7E7] py-2">Values</a>
+//                 </div>
+//               )}
+//             </div>
+            
+//             {/* Mobile Services Submenu */}
+//             <div>
+//               <button 
+//                 className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//                 onClick={() => toggleSubmenu('mobile-services')}
+//               >
+//                 Services
+//                 <svg 
+//                   className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-services' ? 'rotate-180' : ''}`} 
+//                   xmlns="http://www.w3.org/2000/svg" 
+//                   viewBox="0 0 20 20" 
+//                   fill="currentColor"
+//                 >
+//                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//                 </svg>
+//               </button>
+              
+//               {activeSubmenu === 'mobile-services' && (
+//                 <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                   <a href="/services/maintenance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Maintenance planning and oversight</a>
+//                   <a href="/services/inspections" className="block text-white text-md hover:text-[#B4C7E7] py-2">Onboard inspections and audits</a>
+//                   <a href="/services/monitoring" className="block text-white text-md hover:text-[#B4C7E7] py-2">Performance monitoring and analysis</a>
+//                   <a href="/services/dry-docking" className="block text-white text-md hover:text-[#B4C7E7] py-2">Dry-docking management</a>
+//                   <a href="/services/compliance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Regulatory compliance verification</a>
+//                   <a href="/services/assessments" className="block text-white text-md hover:text-[#B4C7E7] py-2">Vessel condition assessments</a>
+//                 </div>
+//               )}
+//             </div>
+            
+//             {/* Mobile Contact Submenu */}
+//             <div>
+//               <button 
+//                 className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//                 onClick={() => toggleSubmenu('mobile-contact')}
+//               >
+//                 Contact
+//                 <svg 
+//                   className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-contact' ? 'rotate-180' : ''}`} 
+//                   xmlns="http://www.w3.org/2000/svg" 
+//                   viewBox="0 0 20 20" 
+//                   fill="currentColor"
+//                 >
+//                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//                 </svg>
+//               </button>
+              
+//               {activeSubmenu === 'mobile-contact' && (
+//                 <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                   <a href="/contact/locations" className="block text-white text-md hover:text-[#B4C7E7] py-2">Locations</a>
+//                   <a href="/contact/support" className="block text-white text-md hover:text-[#B4C7E7] py-2">Support</a>
+//                   <a href="/contact/careers" className="block text-white text-md hover:text-[#B4C7E7] py-2">Careers</a>
+//                 </div>
+//               )}
+//             </div>
+            
+//             <div className="pt-2">
+//               <button className="w-full bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+//                 Get Started
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+// 'use client'; // if you're using Next.js 13/14 with app directory
+
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import React, { useEffect, useState } from 'react';
+
+// // Define a type for submenu identifiers
+// type SubmenuId = 'mobile-about' | 'mobile-services' | 'mobile-contact' | null;
+
+// const Navbar = () => {
+//   const [scrolled, setScrolled] = useState(false);
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const offset = window.scrollY;
+//       if (offset > 10) {
+//         setScrolled(true);
+//       } else {
+//         setScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   const toggleMobileMenu = () => {
+//     setMobileMenuOpen(!mobileMenuOpen);
+//   };
+  
+//   // For mobile only
+//   const [activeSubmenu, setActiveSubmenu] = useState<SubmenuId>(null);
+  
+//   const toggleSubmenu = (submenu: SubmenuId) => {
+//     if (activeSubmenu === submenu) {
+//       setActiveSubmenu(null);
+//     } else {
+//       setActiveSubmenu(submenu);
+//     }
+//   };
+
+//   return (
+//     <nav
+//       className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${
+//         scrolled ? 'bg-[#203864] shadow-lg' : 'bg-transparent'
+//       }`}
+//     >
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+//         {/* Logo */}
+//         <div className="text-white text-xl font-bold">
+//           <div className="flex items-center">
+//             <Link href="/">
+//               <Image
+//                 src="/logo.png"
+//                 width={200}
+//                 height={200}
+//                 alt="Oceanic Advisors Logo"
+//                 className="h-16 sm:h-26 w-auto"
+//               />
+//             </Link>
+//           </div>
+//         </div>
+
+//         <button 
+//           className="md:hidden text-white focus:outline-none"
+//           onClick={toggleMobileMenu}
+//         >
+//           <svg 
+//             xmlns="http://www.w3.org/2000/svg" 
+//             className="h-6 w-6" 
+//             fill="none" 
+//             viewBox="0 0 24 24" 
+//             stroke="currentColor"
+//           >
+//             {mobileMenuOpen ? (
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+//             ) : (
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+//             )}
+//           </svg>
+//         </button>
+
+//         {/* Desktop Navigation with spacing that changes on scroll */}
+//         <div className="hidden md:flex items-center justify-center">
+//           <div className="flex text-white text-xl font-medium">
+//             <a href="#" className="mr-8 hover:text-[#B4C7E7] transition-colors duration-300">Home</a>
+            
+//             {/* About Submenu */}
+//             <div className="relative group">
+//               <a href="/about-us" className={`hover:text-[#B4C7E7] transition-all duration-300 ${scrolled ? 'mr-8' : 'mr-32'}`}>
+//                 About
+//               </a>
+              
+//               <div className="absolute left-0 w-48 rounded-md bg-[#203864] py-1 hidden group-hover:block">
+//                 <a href="/about-us/team" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Our Team</a>
+//                 <a href="/about-us/history" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">History</a>
+//                 <a href="/about-us/values" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Values</a>
+//               </div>
+//             </div>
+            
+//             {/* Services Submenu */}
+//             <div className="relative group">
+//               <a href="/services" className="mr-8 hover:text-[#B4C7E7] transition-colors duration-300">
+//                 Services
+//               </a>
+              
+//               <div className="absolute left-0 w-72 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+//                 <a href="/services/maintenance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Maintenance planning and oversight</a>
+//                 <a href="/services/inspections" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Onboard inspections and audits</a>
+//                 <a href="/services/monitoring" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Performance monitoring and analysis</a>
+//                 <a href="/services/dry-docking" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Dry-docking management</a>
+//                 <a href="/services/compliance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Regulatory compliance verification</a>
+//                 <a href="/services/assessments" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Vessel condition assessments</a>
+//               </div>
+//             </div>
+            
+//             {/* Contact Submenu */}
+//             <div className="relative group">
+//               <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">
+//                 Contact
+//               </a>
+              
+//               <div className="absolute right-0 w-48 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+//                 <a href="/contact/locations" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Locations</a>
+//                 <a href="/contact/support" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Support</a>
+//                 <a href="/contact/careers" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Careers</a>
+//               </div>
+//             </div>
+//           </div>
+          
+//           <div className="ml-10">
+//             <button className="bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+//               Let&apos;s Talk
+//             </button>
+//           </div>
+//         </div>
+
+//         {/* Mobile Menu */}
+//         <div 
+//           className={`md:hidden bg-[#203864] w-full ${
+//             mobileMenuOpen ? 'block' : 'hidden'
+//           }`}
+//         >
+//           <div className="px-4 pt-2 pb-4 space-y-1">
+//             <a 
+//               href="#" 
+//               className="block text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//             >
+//               Home
+//             </a>
+            
+//             {/* Mobile About Submenu */}
+//             <div>
+//               <button 
+//                 className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//                 onClick={() => toggleSubmenu('mobile-about')}
+//               >
+//                 About
+//                 <svg 
+//                   className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-about' ? 'rotate-180' : ''}`} 
+//                   xmlns="http://www.w3.org/2000/svg" 
+//                   viewBox="0 0 20 20" 
+//                   fill="currentColor"
+//                 >
+//                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//                 </svg>
+//               </button>
+              
+//               {activeSubmenu === 'mobile-about' && (
+//                 <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                   <a href="/about-us/team" className="block text-white text-md hover:text-[#B4C7E7] py-2">Our Team</a>
+//                   <a href="/about-us/history" className="block text-white text-md hover:text-[#B4C7E7] py-2">History</a>
+//                   <a href="/about-us/values" className="block text-white text-md hover:text-[#B4C7E7] py-2">Values</a>
+//                 </div>
+//               )}
+//             </div>
+            
+//             {/* Mobile Services Submenu */}
+//             <div>
+//               <button 
+//                 className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//                 onClick={() => toggleSubmenu('mobile-services')}
+//               >
+//                 Services
+//                 <svg 
+//                   className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-services' ? 'rotate-180' : ''}`} 
+//                   xmlns="http://www.w3.org/2000/svg" 
+//                   viewBox="0 0 20 20" 
+//                   fill="currentColor"
+//                 >
+//                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//                 </svg>
+//               </button>
+              
+//               {activeSubmenu === 'mobile-services' && (
+//                 <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                   <a href="/services/maintenance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Maintenance planning and oversight</a>
+//                   <a href="/services/inspections" className="block text-white text-md hover:text-[#B4C7E7] py-2">Onboard inspections and audits</a>
+//                   <a href="/services/monitoring" className="block text-white text-md hover:text-[#B4C7E7] py-2">Performance monitoring and analysis</a>
+//                   <a href="/services/dry-docking" className="block text-white text-md hover:text-[#B4C7E7] py-2">Dry-docking management</a>
+//                   <a href="/services/compliance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Regulatory compliance verification</a>
+//                   <a href="/services/assessments" className="block text-white text-md hover:text-[#B4C7E7] py-2">Vessel condition assessments</a>
+//                 </div>
+//               )}
+//             </div>
+            
+//             {/* Mobile Contact Submenu */}
+//             <div>
+//               <button 
+//                 className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
+//                 onClick={() => toggleSubmenu('mobile-contact')}
+//               >
+//                 Contact
+//                 <svg 
+//                   className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-contact' ? 'rotate-180' : ''}`} 
+//                   xmlns="http://www.w3.org/2000/svg" 
+//                   viewBox="0 0 20 20" 
+//                   fill="currentColor"
+//                 >
+//                   <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+//                 </svg>
+//               </button>
+              
+//               {activeSubmenu === 'mobile-contact' && (
+//                 <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+//                   <a href="/contact/locations" className="block text-white text-md hover:text-[#B4C7E7] py-2">Locations</a>
+//                   <a href="/contact/support" className="block text-white text-md hover:text-[#B4C7E7] py-2">Support</a>
+//                   <a href="/contact/careers" className="block text-white text-md hover:text-[#B4C7E7] py-2">Careers</a>
+//                 </div>
+//               )}
+//             </div>
+            
+//             <div className="pt-2">
+//               <button className="w-full bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+//                 Get Started
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
 'use client'; // if you're using Next.js 13/14 with app directory
 
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-// Define a type for submenu identifiers
 type SubmenuId = 'mobile-about' | 'mobile-services' | 'mobile-contact' | null;
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -793,7 +1531,6 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -801,49 +1538,73 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  
-  // For mobile only
+
   const [activeSubmenu, setActiveSubmenu] = useState<SubmenuId>(null);
-  
+
   const toggleSubmenu = (submenu: SubmenuId) => {
-    if (activeSubmenu === submenu) {
-      setActiveSubmenu(null);
-    } else {
-      setActiveSubmenu(submenu);
-    }
+    setActiveSubmenu(activeSubmenu === submenu ? null : submenu);
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${
-        scrolled ? 'bg-[#203864] shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+    <nav className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${scrolled ? 'bg-[#203864] shadow-lg' : 'bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative">
         {/* Logo */}
         <div className="text-white text-xl font-bold">
           <div className="flex items-center">
             <Link href="/">
-              <Image
-                src="/logo.png"
-                alt="Oceanic Advisors Logo"
-                className="h-16 sm:h-26 w-auto"
-              />
+              <Image src="/logo.png" width={200} height={200} alt="Oceanic Advisors Logo" className="h-16 sm:h-26 w-auto" />
             </Link>
           </div>
         </div>
 
-        <button 
-          className="md:hidden text-white focus:outline-none"
-          onClick={toggleMobileMenu}
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
+        {/* Centered Desktop Navigation */}
+        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 ml-8">
+          <div className="flex items-center justify-center text-white text-xl font-medium">
+            <a href="#" className="mr-8 hover:text-[#B4C7E7] transition-colors duration-300">Home</a>
+
+            <div className="relative group">
+              <a href="/about-us" className={`hover:text-[#B4C7E7] transition-all duration-300 ${scrolled ? 'mr-8' : 'mr-60'}`}>
+                About
+              </a>
+              <div className="absolute left-0 w-48 rounded-md bg-[#203864] py-1 hidden group-hover:block">
+                <a href="/about-us/team" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Our Team</a>
+                <a href="/about-us/history" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">History</a>
+                <a href="/about-us/values" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Values</a>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <a href="/services" className="mr-8 hover:text-[#B4C7E7] transition-colors duration-300">Services</a>
+              <div className="absolute left-0 w-72 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+                <a href="/services/maintenance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Maintenance planning and oversight</a>
+                <a href="/services/inspections" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Onboard inspections and audits</a>
+                <a href="/services/monitoring" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Performance monitoring and analysis</a>
+                <a href="/services/dry-docking" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Dry-docking management</a>
+                <a href="/services/compliance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Regulatory compliance verification</a>
+                <a href="/services/assessments" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Vessel condition assessments</a>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">Contact</a>
+              <div className="absolute right-0 w-48 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
+                <a href="/contact/locations" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Locations</a>
+                <a href="/contact/support" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Support</a>
+                <a href="/contact/careers" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Careers</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden md:block ml-auto">
+          <button className="bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+            Let&apos;s Talk
+          </button>
+        </div>
+
+        {/* Mobile Menu Toggle Button */}
+        <button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {mobileMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -852,161 +1613,69 @@ const Navbar = () => {
           </svg>
         </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8 text-white text-xl font-medium ml-0 ">
-          <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">Home</a>
-          
-          {/* About Submenu */}
-          <div className="relative group">
-            <a href="/about-us" className="hover:text-[#B4C7E7] transition-colors duration-300">
-              About
-            </a>
-            
-            <div className="absolute left-0 w-48 rounded-md bg-[#203864] py-1 hidden group-hover:block">
-              <a href="/about-us/team" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Our Team</a>
-              <a href="/about-us/history" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">History</a>
-              <a href="/about-us/values" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Values</a>
-            </div>
-          </div>
-        </div>
+        {/* Mobile Menu */}
+        <div className={`md:hidden bg-[#203864] w-full ${mobileMenuOpen ? 'block' : 'hidden'}`}>
+          <div className="px-4 pt-2 pb-4 space-y-1">
+            <a href="#" className="block text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2">Home</a>
 
-        <div className="hidden md:flex space-x-8 text-white text-xl font-medium">
-          {/* Services Submenu */}
-          <div className="relative group">
-            <a href="/services" className="hover:text-[#B4C7E7] transition-colors duration-300">
-              Services
-            </a>
-            
-            <div className="absolute left-0 w-72 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
-              <a href="/services/maintenance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Maintenance planning and oversight</a>
-              <a href="/services/inspections" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Onboard inspections and audits</a>
-              <a href="/services/monitoring" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Performance monitoring and analysis</a>
-              <a href="/services/dry-docking" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Dry-docking management</a>
-              <a href="/services/compliance" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Regulatory compliance verification</a>
-              <a href="/services/assessments" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Vessel condition assessments</a>
+            {/* Mobile About */}
+            <div>
+              <button className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2" onClick={() => toggleSubmenu('mobile-about')}>
+                About
+                <svg className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-about' ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {activeSubmenu === 'mobile-about' && (
+                <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+                  <a href="/about-us/team" className="block text-white text-md hover:text-[#B4C7E7] py-2">Our Team</a>
+                  <a href="/about-us/history" className="block text-white text-md hover:text-[#B4C7E7] py-2">History</a>
+                  <a href="/about-us/values" className="block text-white text-md hover:text-[#B4C7E7] py-2">Values</a>
+                </div>
+              )}
             </div>
-          </div>
-          
-          {/* Contact Submenu */}
-          <div className="relative group">
-            <a href="#" className="hover:text-[#B4C7E7] transition-colors duration-300">
-              Contact
-            </a>
-            
-            <div className="absolute right-0 w-48 rounded-md shadow-lg bg-[#203864] py-1 hidden group-hover:block">
-              <a href="/contact/locations" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Locations</a>
-              <a href="/contact/support" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Support</a>
-              <a href="/contact/careers" className="block px-4 py-2 text-sm text-white hover:bg-[#3A5998]">Careers</a>
+
+            {/* Mobile Services */}
+            <div>
+              <button className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2" onClick={() => toggleSubmenu('mobile-services')}>
+                Services
+                <svg className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-services' ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {activeSubmenu === 'mobile-services' && (
+                <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+                  <a href="/services/maintenance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Maintenance planning and oversight</a>
+                  <a href="/services/inspections" className="block text-white text-md hover:text-[#B4C7E7] py-2">Onboard inspections and audits</a>
+                  <a href="/services/monitoring" className="block text-white text-md hover:text-[#B4C7E7] py-2">Performance monitoring and analysis</a>
+                  <a href="/services/dry-docking" className="block text-white text-md hover:text-[#B4C7E7] py-2">Dry-docking management</a>
+                  <a href="/services/compliance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Regulatory compliance verification</a>
+                  <a href="/services/assessments" className="block text-white text-md hover:text-[#B4C7E7] py-2">Vessel condition assessments</a>
+                </div>
+              )}
             </div>
-          </div>
-        </div>
 
-        <div className="hidden md:block">
-          <button className="bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
-            Let&apos;s Talk
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div 
-        className={`md:hidden bg-[#203864] w-full ${
-          mobileMenuOpen ? 'block' : 'hidden'
-        }`}
-      >
-        <div className="px-4 pt-2 pb-4 space-y-1">
-          <a 
-            href="#" 
-            className="block text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
-          >
-            Home
-          </a>
-          
-          {/* Mobile About Submenu */}
-          <div>
-            <button 
-              className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
-              onClick={() => toggleSubmenu('mobile-about')}
-            >
-              About
-              <svg 
-                className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-about' ? 'rotate-180' : ''}`} 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 20 20" 
-                fill="currentColor"
-              >
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
-            
-            {activeSubmenu === 'mobile-about' && (
-              <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
-                <a href="/about-us/team" className="block text-white text-md hover:text-[#B4C7E7] py-2">Our Team</a>
-                <a href="/about-us/history" className="block text-white text-md hover:text-[#B4C7E7] py-2">History</a>
-                <a href="/about-us/values" className="block text-white text-md hover:text-[#B4C7E7] py-2">Values</a>
-              </div>
-            )}
-          </div>
-          
-          {/* Mobile Services Submenu */}
-          <div>
-            <button 
-              className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
-              onClick={() => toggleSubmenu('mobile-services')}
-            >
-              Services
-              <svg 
-                className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-services' ? 'rotate-180' : ''}`} 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 20 20" 
-                fill="currentColor"
-              >
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
-            
-            {activeSubmenu === 'mobile-services' && (
-              <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
-                <a href="/services/maintenance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Maintenance planning and oversight</a>
-                <a href="/services/inspections" className="block text-white text-md hover:text-[#B4C7E7] py-2">Onboard inspections and audits</a>
-                <a href="/services/monitoring" className="block text-white text-md hover:text-[#B4C7E7] py-2">Performance monitoring and analysis</a>
-                <a href="/services/dry-docking" className="block text-white text-md hover:text-[#B4C7E7] py-2">Dry-docking management</a>
-                <a href="/services/compliance" className="block text-white text-md hover:text-[#B4C7E7] py-2">Regulatory compliance verification</a>
-                <a href="/services/assessments" className="block text-white text-md hover:text-[#B4C7E7] py-2">Vessel condition assessments</a>
-              </div>
-            )}
-          </div>
-          
-          {/* Mobile Contact Submenu */}
-          <div>
-            <button 
-              className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2"
-              onClick={() => toggleSubmenu('mobile-contact')}
-            >
-              Contact
-              <svg 
-                className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-contact' ? 'rotate-180' : ''}`} 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 20 20" 
-                fill="currentColor"
-              >
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
-            
-            {activeSubmenu === 'mobile-contact' && (
-              <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
-                <a href="/contact/locations" className="block text-white text-md hover:text-[#B4C7E7] py-2">Locations</a>
-                <a href="/contact/support" className="block text-white text-md hover:text-[#B4C7E7] py-2">Support</a>
-                <a href="/contact/careers" className="block text-white text-md hover:text-[#B4C7E7] py-2">Careers</a>
-              </div>
-            )}
-          </div>
-          
-          <div className="pt-2">
-            <button className="w-full bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
-              Get Started
-            </button>
+            {/* Mobile Contact */}
+            <div>
+              <button className="flex items-center justify-between w-full text-white text-lg hover:text-[#B4C7E7] transition-colors duration-300 py-2" onClick={() => toggleSubmenu('mobile-contact')}>
+                Contact
+                <svg className={`h-4 w-4 transition-transform ${activeSubmenu === 'mobile-contact' ? 'rotate-180' : ''}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {activeSubmenu === 'mobile-contact' && (
+                <div className="pl-4 py-2 space-y-1 bg-[#1A2D50]">
+                  <a href="/contact/locations" className="block text-white text-md hover:text-[#B4C7E7] py-2">Locations</a>
+                  <a href="/contact/support" className="block text-white text-md hover:text-[#B4C7E7] py-2">Support</a>
+                  <a href="/contact/careers" className="block text-white text-md hover:text-[#B4C7E7] py-2">Careers</a>
+                </div>
+              )}
+            </div>
+            <div className="pt-2">
+              <button className="w-full bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -176,13 +176,12 @@ const Hero = () => {
   const [showMainHero, setShowMainHero] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowMainHero(true), 5000); // change duration as needed
+    const timer = setTimeout(() => setShowMainHero(true), 5000); 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Video Background */}
       <video
         autoPlay
         loop
