@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type CountryDoc = {
     flag: string; // image URL
     name: string;
@@ -74,7 +76,7 @@ type CountryDoc = {
                 country.highlight ? "border-red-500" : "border-blue-900"
               } hover:shadow-md transition rounded-md flex flex-col items-center text-center`}
             >
-              <img
+              <Image
                 src={country.flag}
                 alt={country.name}
                 className="w-12 h-auto mb-4"

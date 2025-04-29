@@ -774,6 +774,8 @@
 
 'use client'; // if you're using Next.js 13/14 with app directory
 
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 // Define a type for submenu identifiers
@@ -821,13 +823,13 @@ const Navbar = () => {
         {/* Logo */}
         <div className="text-white text-xl font-bold">
           <div className="flex items-center">
-            <a href="/">
-              <img
+            <Link href="/">
+              <Image
                 src="/logo.png"
                 alt="Oceanic Advisors Logo"
                 className="h-16 sm:h-26 w-auto"
               />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -901,7 +903,7 @@ const Navbar = () => {
 
         <div className="hidden md:block">
           <button className="bg-[#B4C7E7] text-[#203864] py-2 px-6 rounded-full hover:bg-[#8FAADC] transition-colors duration-300">
-            Let's Talk
+            Let&apos;s Talk
           </button>
         </div>
       </div>
