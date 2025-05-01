@@ -133,7 +133,7 @@
 
 // export default MissionVisionSection;
 
-'use client'; // Client component for animations
+'use client'; 
 
 import { motion } from 'framer-motion';
 import { Target, Handshake } from 'lucide-react';
@@ -142,9 +142,8 @@ import React from 'react';
 const MissionVisionSection = () => {
     return (
         <>
-            <section className="relative w-full py-20 overflow-hidden bg-[#8FAADC]">
+            <section className="relative w-full py-20 overflow-hidden bg-[#203864]">
 
-                {/* Black Overlay */}
                 <div className="absolute inset-0 z-1 hidden md:block" />
 
                 <div className="relative z-9 flex flex-col md:flex-row items-center justify-center h-full text-white px-4">

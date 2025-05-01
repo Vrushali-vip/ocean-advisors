@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button } from "./ui/Button";
 
 type CountryDoc = {
     flag: string; // image URL
@@ -46,26 +47,28 @@ type CountryDoc = {
       description: "Endorsements from Panama",
       
     },
-    {
-      flag: "/flags/grenides.webp",
-      name: "SAINT VINCENT & THE GRENADINES",
-      description: "Endorsements from Saint Vincent and the Grenadines",
-    },
+    
     {
       flag: "/flags/togo.svg",
       name: "TOGO",
       description: "Endorsements from Togo",
     },
     {
+      flag: "/flags/grenides.webp",
+      name: "SAINT VINCENT & THE GRENADINES",
+      description: "Endorsements from Saint Vincent and the Grenadines",
+    },
+    {
       flag: "/flags/jamaica.svg",
       name: "JAMAICA",
       description: "Endorsements from Jamaica",
     },
+    
   ];
   
   export default function DocumentsForSailors() {
     return (
-      <section className="py-16 px-4 max-w-7xl mx-auto text-center">
+      <section className="py-16 px-4 max-w-7xl mx-auto text-center bg-white">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 text-[#203864]">Documents for Sailors</h2>
   
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -89,9 +92,9 @@ type CountryDoc = {
           ))}
         </div>
   
-        <button className="mt-10 py-2 px-6 rounded-full bg-[#B4C7E7] text-[#203864] text-sm hover:bg-[#8FAADC] transition">
-          Submit an Application
-        </button>
+        <Button className="bg-[#203864] hover:bg-[#B4C7E7] hover:text-[#203864] px-6 py-3 mt-2 text-white font-semibold rounded-sm mt-10">
+          SUBMIT AN APPLICATION
+        </Button>
       </section>
     );
   }
